@@ -24,12 +24,14 @@ const Cart = ({ setShowCart, shopList }) => {
                   Education List
                 </h3>
                 {shopList.map((item, index) => {
-                  return (
-                    <div key={index} className="rounded border border-gray-400 flex">
+                  if(item.price){
+                    return (
+                      <div key={index} className="rounded border border-gray-400 flex">
                       <img className="w-20 h-20 mr-2" src={item.img}></img>
                       <p>{item.price}</p>
                     </div>
                   );
+                  }
                 })}
               </div>
             </div>
