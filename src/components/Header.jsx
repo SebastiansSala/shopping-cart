@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-const Header = ({ setShowCart, shopList }) => {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    setCounter(counter + 1);
-  }, [shopList]);
+const Header = ({ setShowCart, shopList, counter }) => {
 
   return (
     <header className="bg-gray-900 border-b w-full border-black h-14 mx-auto z-10 flex justify-between">

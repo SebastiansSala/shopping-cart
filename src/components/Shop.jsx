@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import { keyboardList as keyboardsList } from "../database";
+import React, { useEffect, useState } from "react";
+import { keyboardList } from "../database";
 import Header from "./Header";
 import Footer from "../Footer";
 import Cart from "./Cart";
 
-const Shop = ({ setShowCart, showCart, setShopList, shopList }) => {
-  const [keyboardList, setKeyboardList] = useState([...keyboardsList]);
-
-  const handleProduct = (e, id, keyboard) => {
-    e.preventDefault();
+const Shop = ({ setShowCart, showCart, setShopList, shopList, counter, setCounter}) => {
+  
+  const handleProduct = (id, keyboard) => {
     const findProduct = shopList.filter((elem) => id === elem.id);
     const newPrice = findProduct[0].price + keyboard.price;
     setShopList((prevList) =>
       prevList.map((prevKeyboard) =>
-        prevKeyboard.id === id ? { ...prevKeyboard, price: newPrice } : prevKeyboard
+        prevKeyboard.id === id
+          ? { ...prevKeyboard, price: newPrice, count: prevKeyboard.count + 1 }
+          : prevKeyboard
       )
     );
+    setCounter(counter + 1);
   };
-  
 
   return (
     <div>
-      <Header setShowCart={setShowCart} shopList={shopList}></Header>
+      <Header setShowCart={setShowCart} shopList={shopList} counter={counter}></Header>
       <div className="flex-1 flex flex-wrap gap-10 mt-20 justify-center">
         {keyboardList.map((keyboard, index) => (
           <div className="rounded-xl w-80 h-90 p-10 bg-gray-800" key={index}>
@@ -38,7 +38,7 @@ const Shop = ({ setShowCart, showCart, setShopList, shopList }) => {
             </p>
             <button
               className="bg-blue-400 hover:bg-blue-100 -ml-2 mt-4 px-8 py-2 rounded-md text-2xl"
-              onClick={(e) => handleProduct(e, index, keyboard)}
+              onClick={() => handleProduct(index, keyboard)}
             >
               Add
             </button>
@@ -46,7 +46,7 @@ const Shop = ({ setShowCart, showCart, setShopList, shopList }) => {
         ))}
       </div>
       <Footer></Footer>
-      {showCart && <Cart setShowCart={setShowCart} shopList={shopList}></Cart>}
+      {showCart && <Cart setShowCart={setShowCart} shopList={shopList} setShopList={setShopList} setCounter={setCounter}></Cart>}
     </div>
   );
 };
