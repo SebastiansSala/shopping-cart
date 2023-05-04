@@ -39,6 +39,25 @@ const Cart = ({ setShowCart, shopList, setShopList, setCounter }) => {
     setCounter((prevCounter) => prevCounter - 1);
   };
 
+  const handleRemove = (id) => {
+    const findProduct = shopList.filter((elem) => id === elem.id);
+    const findPrice = keyboardList.filter((elem) => id === elem.id);
+    const newPrice = findProduct[0].price - findPrice[0].price;
+    setShopList((prevList) =>
+      prevList.map((prevKeyboard) =>
+        prevKeyboard.id === id
+          ? { ...prevKeyboard, price: 0, count: 0 }
+          : prevKeyboard
+      )
+    );
+    setCounter((prevCounter) => {
+      if (prevCounter - findProduct[0].count < 1) {
+        return 0;
+      }
+      return prevCounter - findProduct[0].count;
+    });
+  };
+
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-center justify-end min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -85,7 +104,10 @@ const Cart = ({ setShowCart, shopList, setShopList, setCounter }) => {
                             +
                           </button>
                           <p className="ml-10">{item.price}</p>
-                          <button className="ml-10 rounded px-4 bg-red-500 hover:bg-red-400 transition-all">
+                          <button
+                            className="ml-10 rounded px-4 bg-red-500 hover:bg-red-400 transition-all"
+                            onClick={() => handleRemove(index)}
+                          >
                             Remove
                           </button>
                         </div>
