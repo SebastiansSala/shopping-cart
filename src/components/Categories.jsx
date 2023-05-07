@@ -41,7 +41,7 @@ const category = [
 
 const Categories = () => {
   return (
-    <section className="container mx-auto flex flex-wrap mt-32 gap-x-12 justify-center gap-y-8">
+    <section className="container mx-auto flex flex-wrap mt-40 gap-x-12 justify-center gap-y-8">
       {category.map((elem, index) => {
         return (
           <div

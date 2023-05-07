@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 const Header = ({ setShowCart, shopList, counter }) => {
   return (
     <header className="shadow-sm w-full top-0 fixed bg-white">
-      <div className="container flex justify-between items-center mx-auto p-8 w-full">
+      <div className="container flex justify-between items-center mx-auto py-4 w-full">
         <Logo></Logo>
         <nav className="flex p-4 gap-10 flex-2 list-none flex-wrap items-center text-2xl">
           <li className="cursor-pointer text-black hover:tracking-widest transition-all duration-300">

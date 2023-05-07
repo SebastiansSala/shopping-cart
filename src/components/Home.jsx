@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Cart from "./Cart";
 import Categories from "./Categories";
+import GuideSection from "./GuideSection";
 
 const Home = ({ showCart, setShowCart, shopList, counter, setCounter }) => {
   return (
@@ -13,6 +14,7 @@ const Home = ({ showCart, setShowCart, shopList, counter, setCounter }) => {
         counter={counter}
       ></Header>
       <Categories/>
+      <GuideSection/>
       <Footer></Footer>
       {showCart && (
         <Cart
