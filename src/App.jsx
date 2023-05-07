@@ -12,8 +12,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="bg-gray-900">
-        <div className="container mx-auto w-full flex flex-col min-w-44">
           <Routes>
             <Route
               path="/"
@@ -42,8 +40,6 @@ function App() {
               }
             ></Route>
           </Routes>
-        </div>
-      </div>
     </BrowserRouter>
   );
 }
