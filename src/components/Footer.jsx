@@ -20,7 +20,7 @@ const Footer = () => {
             <AiFillInstagram />
             <AiFillYoutube />
           </section>
-          <section className="flex flex-col gap-4 text-sm text-gray-500 order-2">
+          <section className="flex flex-col gap-4 text-sm text-gray-500 order-1">
             <h3 className="text-sm lg:text-xl font-bold text-gray-700">KEYCHRON</h3>
             <p>About Us</p>
             <p>Gift Cards</p>
